@@ -1,7 +1,7 @@
 alReady = function( n, t, ready ) {
   ready = function(){ for ( t = 0; ready && t < n; ) ready[ t++ ](); ready = 0 }
   
-  document.addEventListener && document.addEventListener( "domContentLoaded", ready, false )
+  document.addEventListener && document.addEventListener( "DOMContentLoaded", ready, false )
   
   document.readyState && function check() {
     ready && setTimeout( ~document.readyState.indexOf( "in" ) ? check : ready, t *= 2 )
