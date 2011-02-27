@@ -13,11 +13,11 @@ alReady.js is a terse, embeddable, and cross-browser `domContentLoaded` implemen
 
 ## Background
 
-alReady.js was inspired by [this tweet](http://twitter.com/ded/status/40678627645333504) from Twitter's [Dustin Diaz](http://twitter.com/ded/), with started a mad round of code-golfing from a bunch of folks following Dustin, ending in [this genius 60-byte implementation](http://twitter.com/tobie/status/40744285489856512) from [Tobie Langel](http://twitter.com/tobie/)
+alReady.js was inspired by [this tweet](http://twitter.com/ded/status/40678627645333504) from Twitter's [Dustin Diaz](http://twitter.com/ded/), which started a mad round of code-golfing from a bunch of folks that follow Dustin, ending in [this genius 60-byte implementation](http://twitter.com/tobie/status/40744285489856512) from [Tobie Langel](http://twitter.com/tobie/)
 
     function r(f){setTimeout(/in/(document.readyState)?f:r,9,f)}
     
-Unfortunately, a bunch of things prevent this from being usable on the real web, including the fact that Firefox 3.5 and earlier have no `document.readyState` property to check, and that Internet Explorer doesn't support additional arguments in `setTimeout` (in IE, the third argument specifies -- get this -- the name of the language used: `JScript`, `VBScript`, or `JavaScript`).
+Unfortunately, a bunch of things prevent this from being usable on the real web, including the fact that Firefox 3.5 and earlier has no `document.readyState` property to check, and that Internet Explorer doesn't support additional arguments in `setTimeout` (in IE, the third argument specifies -- get this -- the name of the language used: `JScript`, `VBScript`, or `JavaScript`).
 
 Dustin blogged about [his end solution](http://www.dustindiaz.com/smallest-domready-ever/), working it into his [$script.js library](https://github.com/polvero/script.js), but I wanted something more embeddable, so I went in a different direction:
 
