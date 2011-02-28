@@ -1,11 +1,28 @@
-alReady = function( n, t, ready ) {
-  ready = function(){ for ( t = 0; ready && t < n; ) ready[ t++ ](); ready = 0 }
-  
-  document.addEventListener && document.addEventListener( "DOMContentLoaded", ready, false )
-  
-  !function check() {
-    ready && setTimeout( /^u|g$/.test( document.readyState ) ? check : ready, t *= 2 )
-  }()
+// trying a new tack, binding to a ton of events first
+// HEAVILY inspired by diego perini's awesome attempt here:
+// http://javascript.nwbox.com/ContentLoaded/
 
-  return function( fn ){ ready ? ready[ n++ ] = fn : fn() }
-}( 0, 1 )
+alReady = function( win, doc, add, remove, prefix, fns ) {
+  doc[ add ] || ( add = "attachEvent", remove = "detachEvent", prefix = "on" )
+  
+  "load DOMContentLoaded readystatechange".replace( /\w+/g, function( type, el ) {
+    ( el = el ? doc : win )[ add ]( prefix + type, function onready( e ) {
+      if ( !fns || /^rea/.test( type ) && !/e$/.test( doc.readyState ) ) return
+      
+      el[ remove ]( prefix + type, onready, false )
+      while ( fns[ 0 ] ) fns.shift()( e ), console.log(e)
+      fns = 0
+    }, false )
+  })
+  
+  // TODO: add polling?
+
+  return function( fn ){ fns ? fns.push( fn ) : fn() }
+}(
+  window,
+  document,
+  "addEventListener",
+  "removeEventListener",
+  "",
+  []
+)
