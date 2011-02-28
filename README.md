@@ -1,7 +1,7 @@
 alReady.js
 ==========
 
-alReady.js is a terse, embeddable, and cross-browser `domContentLoaded` implementation. It aims to hit a sweet spot in the tradeoff between size and embeddability on one side, and browser compatibility on the other.
+alReady.js is a terse, embeddable, and cross-browser `DOMContentLoaded` implementation. It aims to hit a sweet spot in the tradeoff between size and embeddability on one side, and browser compatibility on the other.
 
 ## Features
 
@@ -21,7 +21,7 @@ Unfortunately, a bunch of things prevent this from being usable on the real web,
 
 Dustin blogged about [his end solution](http://www.dustindiaz.com/smallest-domready-ever/), working it into his [$script.js library](https://github.com/polvero/script.js), but I wanted something more embeddable, so I went in a different direction:
 
-* Instead of detecting whether the `domContentLoaded` event exists, I bind to it anyway immediately, hoping for the best. If it exists, it's almost guaranteed to beat the fallback, which is that
+* Instead of detecting whether the `DOMContentLoaded` event exists, I bind to it anyway immediately, hoping for the best. If it exists, it's almost guaranteed to beat the fallback, which is that
 
 * I also poll `document.readyState`, but using `String#indexOf` instead of `RegExp#test` on its value, and polling with back-off by doubling the interval on every call.
 
@@ -37,7 +37,7 @@ If the document has already loaded, `callback` is called immediately.
 
 Otherwise, it is added to a list of functions waiting for the DOM to be ready.
 
-The DOM is determined to be ready when either the native `domContentLoaded` event occurs, or the `document.readyState` property is either `loaded` or `complete`, as determined by checking every 2 * _n_ milliseconds, where _n_ is the number of times the value has been polled.
+The DOM is determined to be ready when either the native `DOMContentLoaded` event occurs, or the `document.readyState` property is either `loaded` or `complete`, as determined by checking every 2 * _n_ milliseconds, where _n_ is the number of times the value has been polled.
 
 ## Feedback
 
