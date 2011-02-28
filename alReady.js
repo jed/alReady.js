@@ -3,8 +3,8 @@ alReady = function( n, t, ready ) {
   
   document.addEventListener && document.addEventListener( "DOMContentLoaded", ready, false )
   
-  document.readyState && function check() {
-    ready && setTimeout( ~document.readyState.indexOf( "in" ) ? check : ready, t *= 2 )
+  !function check() {
+    ready && setTimeout( /^u|g$/.test( document.readyState ) ? check : ready, t *= 2 )
   }()
 
   return function( fn ){ ready ? ready[ n++ ] = fn : fn() }
