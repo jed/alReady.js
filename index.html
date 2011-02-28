@@ -1,6 +1,6 @@
 <html>
   <head>
-    <script src="allReady.js"></script>
+    <script src="alReady.js"></script>
 
     <script>
       function p( i ) {
@@ -10,15 +10,15 @@
       }
     </script>
 
-    <script>allReady( p( 1 ) )</script>
+    <script>alReady( p( 1 ) )</script>
 
     <script>
-      window.onload = function(){ allReady( p( 5 ) ) }
-      setTimeout( function(){ allReady( p( 6 ) ) }, 1000 )
+      window.onload = function(){ alReady( p( 5 ) ) }
+      setTimeout( function(){ alReady( p( 6 ) ) }, 1000 )
     </script>
   </head>
   </body>
-    <script>allReady( p( 2 ) )</script>
+    <script>alReady( p( 2 ) )</script>
 
     <p>Called in HEAD:              <b id="p1"></b><p>
     <p>Called at beginning of BODY: <b id="p2"></b><p>
@@ -27,7 +27,7 @@
     <p>Called on window.onload:     <b id="p5"></b><p>
     <p>Called after 1000ms:         <b id="p6"></b><p>
 
-    <script>allReady( p( 3 ) )</script>
+    <script>alReady( p( 3 ) )</script>
   </body>
-  <script>allReady( p( 4 ) )</script>
+  <script>alReady( p( 4 ) )</script>
 </html>
