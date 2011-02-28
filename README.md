@@ -13,7 +13,7 @@ alReady.js is a terse, embeddable, and cross-browser `DOMContentLoaded` implemen
 
 ## Background
 
-alReady.js was inspired by [this tweet](http://twitter.com/ded/status/40678627645333504) from Twitter's [Dustin Diaz](http://twitter.com/ded/), which started a mad round of code-golfing from a bunch of folks that follow Dustin, ending in [this genius 60-byte implementation](http://twitter.com/tobie/status/40744285489856512) from [Tobie Langel](http://twitter.com/tobie/)
+alReady.js was inspired by [this tweet](http://twitter.com/ded/status/40678627645333504) from Twitter's [Dustin Diaz](http://twitter.com/ded/), which started a mad round of code-golfing from a bunch of folks that follow Dustin, ending in [this genius 60-byte implementation](http://twitter.com/tobie/status/40744285489856512) from [Tobie Langel](http://twitter.com/tobie/):
 
     function r(f){setTimeout(/in/(document.readyState)?f:r,9,f)}
     
@@ -23,7 +23,7 @@ Dustin blogged about [his end solution](http://www.dustindiaz.com/smallest-domre
 
 * Instead of detecting whether the `DOMContentLoaded` event exists, I bind to it anyway immediately, hoping for the best. If it exists, it's almost guaranteed to beat the fallback, which is that
 
-* I also poll `document.readyState`, but using `String#indexOf` instead of `RegExp#test` on its value, and polling with back-off by doubling the interval on every call.
+* I also poll `document.readyState`, but using a short regular expression that doesn't need to iterate, and backing-off by doubling the interval on every call.
 
 * I maintain a list of callbacks, as opposed to adding a new poller on every call, which could get expensive.
 
@@ -38,6 +38,12 @@ If the document has already loaded, `callback` is called immediately.
 Otherwise, it is added to a list of functions waiting for the DOM to be ready.
 
 The DOM is determined to be ready when either the native `DOMContentLoaded` event occurs, or the `document.readyState` property is either `loaded` or `complete`, as determined by checking every 2 * _n_ milliseconds, where _n_ is the number of times the value has been polled.
+
+### Contributors
+
+[Dustin Diaz](http://twitter.com/ded/)
+[Tobie Langel](http://twitter.com/tobie/)
+[John-David Dalton](http://twitter.com/jdalton/)
 
 ## Feedback
 
