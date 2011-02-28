@@ -39,11 +39,11 @@ Otherwise, it is added to a list of functions waiting for the DOM to be ready.
 
 The DOM is determined to be ready when either the native `DOMContentLoaded` event occurs, or the `document.readyState` property is either `loaded` or `complete`, as determined by checking every 2 * _n_ milliseconds, where _n_ is the number of times the value has been polled.
 
-### Contributors
+## Contributors
 
-[Dustin Diaz](http://twitter.com/ded/)
-[Tobie Langel](http://twitter.com/tobie/)
-[John-David Dalton](http://twitter.com/jdalton/)
+* [Dustin Diaz](http://twitter.com/ded/)
+* [Tobie Langel](http://twitter.com/tobie/)
+* [John-David Dalton](http://twitter.com/jdalton/)
 
 ## Feedback
 
