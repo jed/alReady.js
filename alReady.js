@@ -1,28 +1,29 @@
-// trying a new tack, binding to a ton of events first
+// trying a new tack, binding to events first
 // HEAVILY inspired by diego perini's awesome attempt here:
 // http://javascript.nwbox.com/ContentLoaded/
 
-alReady = function( win, doc, add, remove, prefix, fns ) {
-  doc[ add ] || ( add = "attachEvent", remove = "detachEvent", prefix = "on" )
-  
-  "load DOMContentLoaded readystatechange".replace( /\w+/g, function( type, el ) {
-    ( el = el ? doc : win )[ add ]( prefix + type, function onready( e ) {
-      if ( !fns || /^rea/.test( type ) && !/e$/.test( doc.readyState ) ) return
-      
-      el[ remove ]( prefix + type, onready, false )
-      while ( fns[ 0 ] ) fns.shift()( e ), console.log(e)
-      fns = 0
-    }, false )
-  })
-  
-  // TODO: add polling?
+alReady = function() {
+  var events = [ "load", "DOMContentLoaded", "readystatechange" ]
+    , els = [ window, document, document ]
+    , i
+    , n = 0
 
-  return function( fn ){ fns ? fns.push( fn ) : fn() }
-}(
-  window,
-  document,
-  "addEventListener",
-  "removeEventListener",
-  "",
-  []
-)
+    , action = "addEventListener"
+    , prefix = ""
+    , w3c = document[ action ]
+
+    , ready = function( e ) {
+        if ( !ready || e.type == "readystatechange" && !/^c/.test( document.readyState ) ) return
+
+        for ( i = 3; i--; ) els[ i ][ action ]( prefix + events[ i ], ready, false )
+        for ( i = 0; i < n; ) ready[ i++ ]( e )
+        ready = 0
+      }
+        
+  if ( !w3c ) add = "attachEvent", prefix = "on"
+  
+  for ( i = 3; i--; ) els[ i ][ action ]( prefix + events[ i ], ready, false )
+  action = w3c ? "removeEventListener" : "detachEvent"
+  
+  return function( fn ){ ready ? ready[ n++ ] = fn : fn() }
+}()
