@@ -3,31 +3,114 @@
     <script src="alReady.js"></script>
 
     <script>
-      function p( i ) {
-        return function() {
-          document.getElementById( "p" + i ).innerHTML = "OK"
-        }
-      }
-    </script>
-
-    <script>alReady( p( 1 ) )</script>
-
-    <script>
-      window.onload = function(){ alReady( p( 5 ) ) }
-      setTimeout( function(){ alReady( p( 6 ) ) }, 1000 )
+      t = Date.now()
+      alReady( function() {
+        console.log( alert( "loaded in " + ( Date.now() - t ) + " ms" ) )
+      })
     </script>
   </head>
   </body>
-    <script>alReady( p( 2 ) )</script>
-
-    <p>Called in HEAD:              <b id="p1"></b><p>
-    <p>Called at beginning of BODY: <b id="p2"></b><p>
-    <p>Called at end of BODY:       <b id="p3"></b><p>
-    <p>Called after BODY:           <b id="p4"></b><p>
-    <p>Called on window.onload:     <b id="p5"></b><p>
-    <p>Called after 1000ms:         <b id="p6"></b><p>
-
-    <script>alReady( p( 3 ) )</script>
+    `Twas brillig, and the slithy toves<br>
+    &nbsp;&nbsp;Did gyre and gimble in the wabe:<br>
+    All mimsy were the borogoves,<br>
+    &nbsp;&nbsp;And the mome raths outgrabe.<br>
+    <br>
+    "Beware the Jabberwock, my son!<br>
+    &nbsp;&nbsp;The jaws that bite, the claws that catch!<br>
+    Beware the Jubjub bird, and shun<br>
+    &nbsp;&nbsp;The frumious Bandersnatch!"<br>
+    <br>
+    He took his vorpal sword in hand:<br>
+    &nbsp;&nbsp;Long time the manxome foe he sought --<br>
+    So rested he by the Tumtum tree,<br>
+    &nbsp;&nbsp;And stood awhile in thought.<br>
+    <br>
+    And, as in uffish thought he stood,<br>
+    &nbsp;&nbsp;The Jabberwock, with eyes of flame,<br>
+    Came whiffling through the tulgey wood,<br>
+    &nbsp;&nbsp;And burbled as it came!<br>
+    <br>
+    One, two! One, two! And through and through<br>
+    &nbsp;&nbsp;The vorpal blade went snicker-snack!<br>
+    He left it dead, and with its head<br>
+    &nbsp;&nbsp;He went galumphing back.<br>
+    <br>
+    "And, has thou slain the Jabberwock?<br>
+    &nbsp;&nbsp;Come to my arms, my beamish boy!<br>
+    O frabjous day! Callooh! Callay!'<br>
+    &nbsp;&nbsp;He chortled in his joy.<br>
+    <br>
+    `Twas brillig, and the slithy toves<br>
+    &nbsp;&nbsp;Did gyre and gimble in the wabe;<br>
+    All mimsy were the borogoves,<br>
+    &nbsp;&nbsp;And the mome raths outgrabe.
+    `Twas brillig, and the slithy toves<br>
+    &nbsp;&nbsp;Did gyre and gimble in the wabe:<br>
+    All mimsy were the borogoves,<br>
+    &nbsp;&nbsp;And the mome raths outgrabe.<br>
+    <br>
+    "Beware the Jabberwock, my son!<br>
+    &nbsp;&nbsp;The jaws that bite, the claws that catch!<br>
+    Beware the Jubjub bird, and shun<br>
+    &nbsp;&nbsp;The frumious Bandersnatch!"<br>
+    <br>
+    He took his vorpal sword in hand:<br>
+    &nbsp;&nbsp;Long time the manxome foe he sought --<br>
+    So rested he by the Tumtum tree,<br>
+    &nbsp;&nbsp;And stood awhile in thought.<br>
+    <br>
+    And, as in uffish thought he stood,<br>
+    &nbsp;&nbsp;The Jabberwock, with eyes of flame,<br>
+    Came whiffling through the tulgey wood,<br>
+    &nbsp;&nbsp;And burbled as it came!<br>
+    <br>
+    One, two! One, two! And through and through<br>
+    &nbsp;&nbsp;The vorpal blade went snicker-snack!<br>
+    He left it dead, and with its head<br>
+    &nbsp;&nbsp;He went galumphing back.<br>
+    <br>
+    "And, has thou slain the Jabberwock?<br>
+    &nbsp;&nbsp;Come to my arms, my beamish boy!<br>
+    O frabjous day! Callooh! Callay!'<br>
+    &nbsp;&nbsp;He chortled in his joy.<br>
+    <br>
+    `Twas brillig, and the slithy toves<br>
+    &nbsp;&nbsp;Did gyre and gimble in the wabe;<br>
+    All mimsy were the borogoves,<br>
+    &nbsp;&nbsp;And the mome raths outgrabe.
+    `Twas brillig, and the slithy toves<br>
+    &nbsp;&nbsp;Did gyre and gimble in the wabe:<br>
+    All mimsy were the borogoves,<br>
+    &nbsp;&nbsp;And the mome raths outgrabe.<br>
+    <br>
+    "Beware the Jabberwock, my son!<br>
+    &nbsp;&nbsp;The jaws that bite, the claws that catch!<br>
+    Beware the Jubjub bird, and shun<br>
+    &nbsp;&nbsp;The frumious Bandersnatch!"<br>
+    <br>
+    He took his vorpal sword in hand:<br>
+    &nbsp;&nbsp;Long time the manxome foe he sought --<br>
+    So rested he by the Tumtum tree,<br>
+    &nbsp;&nbsp;And stood awhile in thought.<br>
+    <br>
+    And, as in uffish thought he stood,<br>
+    &nbsp;&nbsp;The Jabberwock, with eyes of flame,<br>
+    Came whiffling through the tulgey wood,<br>
+    &nbsp;&nbsp;And burbled as it came!<br>
+    <br>
+    One, two! One, two! And through and through<br>
+    &nbsp;&nbsp;The vorpal blade went snicker-snack!<br>
+    He left it dead, and with its head<br>
+    &nbsp;&nbsp;He went galumphing back.<br>
+    <br>
+    "And, has thou slain the Jabberwock?<br>
+    &nbsp;&nbsp;Come to my arms, my beamish boy!<br>
+    O frabjous day! Callooh! Callay!'<br>
+    &nbsp;&nbsp;He chortled in his joy.<br>
+    <br>
+    `Twas brillig, and the slithy toves<br>
+    &nbsp;&nbsp;Did gyre and gimble in the wabe;<br>
+    All mimsy were the borogoves,<br>
+    &nbsp;&nbsp;And the mome raths outgrabe.
   </body>
-  <script>alReady( p( 4 ) )</script>
 </html>
