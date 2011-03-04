@@ -2,7 +2,9 @@ alReady = function( fn ) {
   var add = "addEventListener"
     , win = this
     , doc = win.document
-    , pre = doc[ add ] ? "" : "on"
+    , pre = doc[ add ] ? "" : "on";
+    
+  /m/( doc.readyState ) ? fn() :
 
   "load DOMContentLoaded readystatechange".replace( /\w+/g, function( type, i ) {
     ( i ? doc : win )

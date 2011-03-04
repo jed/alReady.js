@@ -9,7 +9,7 @@ alReady.js is a terse, embeddable, and cross-browser `DOMContentLoaded` implemen
 
 * **Embeddable**: alReady.js has no dependencies, and can be dropped as-is into your own code or library.
 
-* **Cross-browser**: alReady.js will work in almost any web browser. 
+* **Cross-browser**: alReady.js will work in any web browser. 
 
 ## Background
 
@@ -19,31 +19,26 @@ alReady.js was inspired by [this tweet](http://twitter.com/ded/status/4067862764
     
 Unfortunately, a bunch of things prevent this from being usable on the real web, including the fact that Firefox 3.5 and earlier has no `document.readyState` property to check, and that Internet Explorer doesn't support additional arguments in `setTimeout` (in IE, the third argument specifies -- get this -- the name of the language used: `JScript`, `VBScript`, or `JavaScript`).
 
-Dustin blogged about [his end solution](http://www.dustindiaz.com/smallest-domready-ever/), working it into his [$script.js library](https://github.com/polvero/script.js), but I wanted something more embeddable, so I went in a different direction:
+Dustin blogged about [his end solution](http://www.dustindiaz.com/smallest-domready-ever/), working it into his [$script.js library](https://github.com/polvero/script.js), but I wanted something more embeddable, so I went in a different direction, trying backoff polling and other cross-browser methods.
 
-* Instead of detecting whether the `DOMContentLoaded` event exists, I bind to it anyway immediately, hoping for the best. If it exists, it's almost guaranteed to beat the fallback, which is that
-
-* I also poll `document.readyState`, but using a short regular expression that doesn't need to iterate, and backing-off by doubling the interval on every call.
-
-* I maintain a list of callbacks, as opposed to adding a new poller on every call, which could get expensive.
+Eventually, [John-David Dalton](http://twitter.com/jdalton/) pointed me to [Diego Perini](http://twitter.com/diegoperini/)'s [implementation](https://github.com/dperini/ContentLoaded), from which the current version is largely inspired. The biggest difference is that `alReady.js` is much smaller at just over 200 gzipped bytes, and does not optimize on edge cases for soon-to-be-negligible versions of IE.
 
 ## API
 
 ### alReady( callback )
 
-`callback` is guaranteed to be called once and only once.
+`callback` is guaranteed to be called once and only once. Use `alReady.call( window, callback )` to specify the window of the document to be checked.
 
-If the document has already loaded, `callback` is called immediately.
+If the document has already loaded, `callback` is called immediately. Otherwise, `callback` is bound to the window's `load` event and document's `DOMContentLoaded` and `readystatechange` events, and is called when the first one occurs.
 
-Otherwise, it is added to a list of functions waiting for the DOM to be ready.
+Otherise
 
-The DOM is determined to be ready when either the native `DOMContentLoaded` event occurs, or the `document.readyState` property is either `loaded` or `complete`, as determined by checking every 2 * _n_ milliseconds, where _n_ is the number of times the value has been polled.
-
-## Contributors
+## Contributors/Inspirers
 
 * [Dustin Diaz](http://twitter.com/ded/)
 * [Tobie Langel](http://twitter.com/tobie/)
 * [John-David Dalton](http://twitter.com/jdalton/)
+* [Diego Perini](http://twitter.com/diegoperini/)
 
 ## Feedback
 
