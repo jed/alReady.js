@@ -5,7 +5,7 @@ alReady.js is a terse, embeddable, and cross-browser `DOMContentLoaded` implemen
 
 ## Features
 
-* **Terse**: alReady.js contains fewer than 200 bytes after closure minification and gzipping.
+* **Terse**: alReady.js contains just over 200 bytes after closure minification and gzipping.
 
 * **Embeddable**: alReady.js has no dependencies, and can be dropped as-is into your own code or library.
 
