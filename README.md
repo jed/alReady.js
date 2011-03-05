@@ -31,8 +31,6 @@ Eventually, [John-David Dalton](http://twitter.com/jdalton/) pointed me to [Dieg
 
 If the document has already loaded, `callback` is called immediately. Otherwise, `callback` is bound to the window's `load` event and document's `DOMContentLoaded` and `readystatechange` events, and is called when the first one occurs.
 
-Otherise
-
 ## Contributors/Inspirers
 
 * [Dustin Diaz](http://twitter.com/ded/)
