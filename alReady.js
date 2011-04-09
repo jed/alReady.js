@@ -4,14 +4,14 @@ alReady = function( fn ) {
     , doc = win.document
     , pre = doc[ add ] ? "" : "on";
     
-  /m/( doc.readyState ) ? fn() :
+  ~doc.readyState.indexOf( "m" ) ? fn() :
 
   "load DOMContentLoaded readystatechange".replace( /\w+/g, function( type, i ) {
     ( i ? doc : win )
       [ pre ? "attachEvent" : add ]
       (
         pre + type,
-        function(){ if ( fn ) if ( i < 6 || /m/( doc.readyState ) ) fn(), fn = 0 },
+        function(){ if ( fn ) if ( i < 6 || ~doc.readyState.indexOf( "m" ) ) fn(), fn = 0 },
         !1
       )
   })
